@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":300,
+  "height":200,
+  "config":{ "font":"Gelasio, serif"},
+
+  "title":"Healthy Patient",
+  "data": {
+    "url": "frequency_power_long_sub60.csv"
+  },
+
+  "mark": {"type":"rect","tooltip":true},
+
+  "encoding": {
+    "x": {
+      "field": "frequency",
+      "type": "quantitative",
+      "title":"Brain wave frequency (Hz)",
+      "bin": {
+        "maxbins": 80
+      }
+    },
+
+    "y": {
+      "field": "channel",
+      "type": "nominal",
+      "title": "Brain Area",
+      "scale": {"domain": ["T3","T4","T5","T6","P3","P4","Pz"]}
+    },
+
+    "color": {
+      "field": "log_power",
+      "type": "quantitative",
+      "scale": { "scheme": "viridis", "domain":[-13.5,-8.5]},
+      "legend":null
+    },
+    "tooltip": [
+      { "field": "channel", "title": "Brain Area" },
+      { "field": "frequency", "title": "Frequency" ,"format":"d"},
+      { "field": "log_power", "title": "Power (log)", "format": ".2f" }
+    ]
+  }
+}

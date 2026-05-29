@@ -1,0 +1,29 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 220,
+  "height": 280,
+  "config":{ "font":"Gelasio, serif"},
+  "title": "Average GPA for different Stress levels",
+  "data": {"url": "student_lifestyle_dataset.csv"},
+  "mark": {"type":"bar", "stroke":"black","strokeWidth":1.0},
+  "encoding": {
+    "x": {
+        "field": "Stress_Level", 
+        "title": "Stress level",
+        "sort": ["Low", "Moderate", "High"],
+    "type": "ordinal"},
+    "y": {
+        "field": "GPA",
+            "title":"GPA",
+        "type":"quantitative",
+        "aggregate":"mean",
+        "scale":{"domain":[2.5,3.5]}
+    },
+    "color": {
+        "field": "Stress_Level",
+        "type": "ordinal",
+        "scale": {"scheme":"set3"},
+        "legend":null
+    }
+  }
+}
