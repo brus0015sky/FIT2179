@@ -1,0 +1,35 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,
+  "height": 300,
+  "config":{ "font":"Gelasio, serif"},
+  "title": "Dementia Afflicted Patient",
+  "data": { "url": "pet_slice_sub03.json" },
+  "mark": { "type": "rect", "tooltip": true },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "ordinal",
+      "title": "Horizontal Position",
+      "axis" : { "labels" : false}
+    },
+    "y": {
+      "field": "y",
+      "type": "ordinal",
+      "sort": "descending",
+      "title": "Vertical Position",
+      "axis" : {"labels" : false}
+    },
+    "color": {
+      "field": "v",
+      "type": "quantitative",
+      "scale": { "scheme": "viridis", "domain": [0, 1.0] },
+      "legend": { "title": "SUVR", "orient": "right", "gradientLength": 280 }
+    },
+    "tooltip": [
+      { "field": "x", "title": "x" },
+      { "field": "y", "title": "y" },
+      { "field": "v", "title": "SUVR", "format": ".3f" }
+    ]
+  }
+}

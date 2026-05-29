@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":300,
+  "height":300,
+  "description": "EEG voltages over time",
+  "data": {
+    "url": "eeg_long.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    
+    "x": {
+      "field": "time",
+      "type": "quantitative",
+      "bin": {
+        "maxbins": 50
+      },
+      "title": "Time"
+      
+    },
+    "y": {
+      "field": "channel",
+      "type": "nominal",
+      "title": "EEG Channel"
+    },
+    "color": {
+      "field": "voltage",
+      "type": "quantitative",
+      "title": "Voltage (µV)",
+      "scale": {
+        "scheme": "greens",
+        "domain": [-100,1000]
+      }
+    }
+  }
+}

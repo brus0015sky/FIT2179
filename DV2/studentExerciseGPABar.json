@@ -1,0 +1,30 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 220,
+  "height": 280,
+  "config":{ "font":"Gelasio, serif"},
+  "title": "Average GPA for different levels of exercise",
+  "data": {"url": "student_lifestyle_dataset.csv"},
+  "mark": {"type":"bar", "stroke":"black","strokeWidth":1.0},
+  "encoding": {
+    "x": {
+        "field": "Physical_Activity_Hours_Per_Day", 
+        "title": "Physical Activity Hours Per Day",
+    "type": "quantitative",
+    "bin":{"maxbins": 10}},
+    "y": {
+        "field": "GPA",
+            "title":"GPA",
+        "type":"quantitative",
+        "aggregate":"mean",
+        "scale":{"domain":[2.7,3.3]}
+    },
+    "color": {
+        "field": "Physical_Activity_Hours_Per_Day",
+        "type": "quantitative",
+        "bin":{"maxbins": 10},
+        "scale": {"scheme":"set3"},
+        "legend":null
+    }
+  }
+}
